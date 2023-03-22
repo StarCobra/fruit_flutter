@@ -39,7 +39,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "dart.analysis.tool.window.visible": "false",
-    "last_opened_file_path": "/home/damien/Bureau/fruit_flutter",
+    "last_opened_file_path": "/home/damien/Bureau/fruit_flutter/fruit_salad",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -66,6 +66,7 @@
       <workItem from="1678971112914" duration="1045000" />
       <workItem from="1679490199237" duration="346000" />
       <workItem from="1679490942545" duration="814000" />
+      <workItem from="1679492345846" duration="24000" />
     </task>
     <servers />
   </component>
