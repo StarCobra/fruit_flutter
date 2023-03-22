@@ -6,14 +6,6 @@ Création d'une application Flutter qui affiche une liste de fruits. Ces fruits 
 
 Avancement du projet : **TP4**
 
-## Tester la web app
-
-```
-git clone git@github.com:StarCobra/fruit_flutter.git
-cd fruit_flutter
-flutter run
-```
-
 ## Documentation
 
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
