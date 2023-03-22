@@ -1,16 +1,21 @@
 # fruit_salad
 
-A new Flutter project.
+## Participants : Damien Poirot, Léo Six et Waïl Zidane
 
-## Getting Started
+Création d'une application Flutter qui affiche une liste de fruits. Ces fruits peuvent être ajoutés au panier en affichant le montant total.
 
-This project is a starting point for a Flutter application.
+Avancement du projet : **TP4**
 
-A few resources to get you started if this is your first Flutter project:
+## Tester la web app
+
+```
+git clone git@github.com:StarCobra/fruit_flutter.git
+cd fruit_flutter
+flutter run
+```
+
+## Documentation
 
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [Online Flutter documentation](https://docs.flutter.dev/) 
