@@ -84,7 +84,8 @@ class CartScreen extends StatelessWidget {
                       );
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     },
-                    child: const Icon(Icons.delete, size: 20, color: Colors.black38),
+                    child: const Icon(Icons.delete,
+                        size: 20, color: Colors.black38),
                   )
                 ],
               ),

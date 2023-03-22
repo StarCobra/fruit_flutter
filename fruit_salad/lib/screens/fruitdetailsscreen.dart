@@ -6,12 +6,12 @@ class FruitDetailsScreen extends StatelessWidget {
   final VoidCallback deleteFruit;
   final VoidCallback onTap;
 
-  const FruitDetailsScreen(
-      {super.key,
-      required this.fruit,
-      required this.deleteFruit,
-      required this.onTap,
-      });
+  const FruitDetailsScreen({
+    super.key,
+    required this.fruit,
+    required this.deleteFruit,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +66,10 @@ class FruitDetailsScreen extends StatelessWidget {
                 content: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text((fruit.clickCount == 0) ? "Erreur lors de la suppression ! Le fruit ${fruit.name} n'est pas dans votre panier !" : "${fruit.name} supprimé(e) !",
+                      Text(
+                          (fruit.clickCount == 0)
+                              ? "Erreur lors de la suppression ! Le fruit ${fruit.name} n'est pas dans votre panier !"
+                              : "${fruit.name} supprimé(e) !",
                           style: const TextStyle(
                               color: Colors.white,
                               fontSize: 20,
@@ -81,8 +84,7 @@ class FruitDetailsScreen extends StatelessWidget {
                 ),
                 backgroundColor: Colors.red,
               );
-              if(fruit.clickCount == 0) {
-
+              if (fruit.clickCount == 0) {
               } else {
                 deleteFruit();
               }

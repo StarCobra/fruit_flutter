@@ -27,20 +27,18 @@ class _FruitsMasterState extends State<FruitsMaster> {
     // _fruits = widget.fruits;
   }
 
- // "${fruit.name} supprimé(e) !";
+  // "${fruit.name} supprimé(e) !";
 
   // "Erreur lors de la suppression ! Le fruit ${fruit.name} n'est pas dans votre panier !";
 
   void _onFruitTap(Fruit fruit) {
     setState(() {
-
       fruit.clickCount++;
       /*   if (fruit.clickCount == 2 && fruit.name[fruit.name.length - 1] != "s") {
         fruit.name = "${fruit.name}s";
       }*/
 
-      if(_cart.contains(fruit)) {
-
+      if (_cart.contains(fruit)) {
       } else {
         _cart.add(fruit);
       }
@@ -78,16 +76,13 @@ class _FruitsMasterState extends State<FruitsMaster> {
               .substring(0, widget.fruits[i].name.length - 1);
         }
       }*/
-      _sum = 0;
-
       _fruits.clear();
     });
   }
 
   void _deleteFruit(Fruit fruit) {
     setState(() {
-
-      if(fruit.clickCount == 1) {
+      if (fruit.clickCount == 1) {
         _cart.remove(fruit);
       }
 
