@@ -3,18 +3,15 @@ import '../fruit.dart';
 
 class FruitDetailsScreen extends StatelessWidget {
   final Fruit fruit;
-  final String snack;
-  final String snackError;
   final VoidCallback deleteFruit;
   final VoidCallback onTap;
 
   const FruitDetailsScreen(
       {super.key,
       required this.fruit,
-      required this.snack,
-      required this.snackError,
       required this.deleteFruit,
-      required this.onTap});
+      required this.onTap,
+      });
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +30,7 @@ class FruitDetailsScreen extends StatelessWidget {
         children: [
           Center(
             child: Image.asset(
-              'assets/${fruit.pic}', // chemin de l'image à afficher
+              fruit.pic, // chemin de l'image à afficher
               height: 200,
               width: 200,
             ),
@@ -64,12 +61,12 @@ class FruitDetailsScreen extends StatelessWidget {
               ),
             ),
             onPressed: () {
-
               final snackBar = SnackBar(
+                duration: const Duration(milliseconds: 550),
                 content: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text((fruit.clickCount == 0) ? snackError : snack,
+                      Text((fruit.clickCount == 0) ? "Erreur lors de la suppression ! Le fruit ${fruit.name} n'est pas dans votre panier !" : "${fruit.name} supprimé(e) !",
                           style: const TextStyle(
                               color: Colors.white,
                               fontSize: 20,
@@ -100,7 +97,7 @@ class FruitDetailsScreen extends StatelessWidget {
         onPressed: () {
           onTap();
           final snackBar = SnackBar(
-            duration: const Duration(milliseconds: 100),
+            duration: const Duration(milliseconds: 550),
             content: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

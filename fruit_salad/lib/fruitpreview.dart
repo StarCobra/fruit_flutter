@@ -4,8 +4,6 @@ import 'fruit.dart';
 
 class FruitPreview extends StatelessWidget {
   final Fruit fruit;
-  final String snack;
-  final String snackError;
   final VoidCallback onTap;
   final VoidCallback deleteFruit;
 
@@ -14,19 +12,16 @@ class FruitPreview extends StatelessWidget {
     required this.fruit,
     required this.onTap,
     required this.deleteFruit,
-    required this.snack,
-    required this.snackError,
   });
 
   Route _createRoute() {
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) =>
           FruitDetailsScreen(
-              fruit: fruit,
-              deleteFruit: deleteFruit,
-              onTap: onTap,
-              snack: snack,
-              snackError: snackError),
+        fruit: fruit,
+        deleteFruit: deleteFruit,
+        onTap: onTap,
+      ),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         const begin = Offset(1.0, 0.0);
         const end = Offset.zero;
@@ -69,7 +64,7 @@ class FruitPreview extends StatelessWidget {
                       ),
                     ),
                     Image.asset(
-                      'assets/${fruit.pic}', // chemin de l'image à afficher
+                      fruit.pic, // chemin de l'image à afficher
                       height: 48,
                       width: 48, // largeur de l'image
                     ),
@@ -96,9 +91,9 @@ class FruitPreview extends StatelessWidget {
                   ),*/
                   TextButton(
                       onPressed: () {
-                        onTap;
+                        onTap();
                         final snackBar = SnackBar(
-                          duration: const Duration(milliseconds: 100),
+                          duration: const Duration(milliseconds: 550),
                           content: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [

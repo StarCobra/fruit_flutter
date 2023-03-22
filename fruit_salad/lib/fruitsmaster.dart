@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'fruit.dart';
 import 'fruitpreview.dart';
+import 'screens/cartscreen.dart';
 
 class FruitsMaster extends StatefulWidget {
   final List<Fruit> fruits;
@@ -15,9 +16,9 @@ class FruitsMaster extends StatefulWidget {
 class _FruitsMasterState extends State<FruitsMaster> {
   final List<Fruit> _fruits = [];
   final List<Fruit> _cart = [];
+  final PageController _pageController = PageController();
   double _sum = 0;
-  String snack = "";
-  String snackError = "";
+  int _currentPage = 0;
 
   @override
   void initState() {
@@ -26,19 +27,23 @@ class _FruitsMasterState extends State<FruitsMaster> {
     // _fruits = widget.fruits;
   }
 
-  void initSnack(Fruit fruit) {
-   snack = "${fruit.name} supprimé(e) !";
-   snackError = "Erreur lors de la suppression ! Le fruit ${fruit.name} n'est pas dans votre panier !";
-  }
+ // "${fruit.name} supprimé(e) !";
+
+  // "Erreur lors de la suppression ! Le fruit ${fruit.name} n'est pas dans votre panier !";
 
   void _onFruitTap(Fruit fruit) {
-    initSnack(fruit);
     setState(() {
+
       fruit.clickCount++;
-   /*   if (fruit.clickCount == 2 && fruit.name[fruit.name.length - 1] != "s") {
+      /*   if (fruit.clickCount == 2 && fruit.name[fruit.name.length - 1] != "s") {
         fruit.name = "${fruit.name}s";
       }*/
-      _cart.add(fruit);
+
+      if(_cart.contains(fruit)) {
+
+      } else {
+        _cart.add(fruit);
+      }
       _sum += fruit.price;
     });
   }
@@ -80,14 +85,15 @@ class _FruitsMasterState extends State<FruitsMaster> {
   }
 
   void _deleteFruit(Fruit fruit) {
-    initSnack(fruit);
     setState(() {
-      // final newFruitIndex = _fruits.indexOf(fruit);
+
+      if(fruit.clickCount == 1) {
+        _cart.remove(fruit);
+      }
 
       if (fruit.clickCount == 0) {
 /*        widget.fruits.insert(0, _fruits[newFruitIndex]);
         _fruits.removeAt(newFruitIndex);*/
-
       } else {
         _sum = (_sum - fruit.price);
       }
@@ -107,44 +113,82 @@ class _FruitsMasterState extends State<FruitsMaster> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Center(
-            child: Text(
-          "Montant : ${_sum.toStringAsFixed(2).replaceAll('.', ',')} €",
-          style: const TextStyle(fontSize: 32, fontWeight: FontWeight.normal),
-        )),
-      ),
-      body: ListView.builder(
-        itemCount: _fruits.length,
-        itemBuilder: (context, index) {
-          final fruit = _fruits[index];
-          return FruitPreview(
-            fruit: fruit,
-            snack: snack,
-            snackError: snackError,
-            onTap: () => _onFruitTap(fruit),
-            deleteFruit: () => _deleteFruit(fruit),
-          );
-        },
-      ),
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          FloatingActionButton(
-            onPressed: _addRandomFruit,
-            tooltip: 'Ajouter un fruit !',
-            heroTag: null,
-            child: const Icon(Icons.add),
-          ),
-          const SizedBox(height: 16.0), // espace entre les deux boutons
-          FloatingActionButton(
-            onPressed: _resetPage,
-            tooltip: 'Réinitialiser la page ?',
-            heroTag: null,
-            child: const Icon(Icons.restart_alt),
-          ),
-        ],
-      ),
-    );
+        appBar: AppBar(
+          title: Center(
+              child: Text(
+            "Montant : ${_sum.toStringAsFixed(2).replaceAll('.', ',')} €",
+            style: const TextStyle(fontSize: 32, fontWeight: FontWeight.normal),
+          )),
+        ),
+        body: PageView(
+          controller: _pageController,
+          children: [
+            ListView.builder(
+              itemCount: _fruits.length,
+              itemBuilder: (context, index) {
+                final fruit = _fruits[index];
+                return FruitPreview(
+                  fruit: fruit,
+                  onTap: () => _onFruitTap(fruit),
+                  deleteFruit: () => _deleteFruit(fruit),
+                );
+              },
+            ),
+            ListView.builder(
+              itemCount: _cart.length,
+              itemBuilder: (context, index) {
+                final fruit = _cart[index];
+                return CartScreen(
+                  fruits: _cart,
+                  fruit: fruit,
+                  deleteFruit: () => _deleteFruit(fruit),
+                );
+              },
+            )
+          ],
+          onPageChanged: (index) {
+            setState(() {
+              _currentPage = index;
+            });
+          },
+        ),
+        floatingActionButton: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            FloatingActionButton(
+              onPressed: _addRandomFruit,
+              tooltip: 'Ajouter un fruit !',
+              heroTag: null,
+              child: const Icon(Icons.add),
+            ),
+            const SizedBox(height: 16.0), // espace entre les deux boutons
+            FloatingActionButton(
+              onPressed: _resetPage,
+              tooltip: 'Réinitialiser la page ?',
+              heroTag: null,
+              child: const Icon(Icons.restart_alt),
+            ),
+          ],
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.list),
+              label: 'Fruits',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.list_alt),
+              label: 'Panier',
+            ),
+          ],
+          currentIndex: _currentPage,
+          onTap: (index) {
+            _pageController.animateToPage(
+              index,
+              duration: const Duration(milliseconds: 500),
+              curve: Curves.ease,
+            );
+          },
+        ));
   }
 }
