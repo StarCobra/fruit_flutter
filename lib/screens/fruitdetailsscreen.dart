@@ -30,7 +30,7 @@ class FruitDetailsScreen extends StatelessWidget {
         children: [
           Center(
             child: Image.asset(
-              fruit.pic, // chemin de l'image à afficher
+              fruit.image, // chemin de l'image à afficher
               height: 200,
               width: 200,
             ),
@@ -45,8 +45,24 @@ class FruitDetailsScreen extends StatelessWidget {
                   ))),
           const SizedBox(height: 50),
           Center(
+              child: Text("Origine : ${fruit.origin}",
+                  style: const TextStyle(
+                    fontSize: 18, // Taille du texte en pixels
+                    fontWeight:
+                        FontWeight.normal, // Épaisseur du texte (bold = gras)
+                  ))),
+          const SizedBox(height: 50),
+          Center(
+              child: Text("Stock : ${fruit.stock}",
+                  style: const TextStyle(
+                    fontSize: 18, // Taille du texte en pixels
+                    fontWeight:
+                    FontWeight.normal, // Épaisseur du texte (bold = gras)
+                  ))),
+          const SizedBox(height: 50),
+          Center(
               child: Text(
-                  "${(fruit.price).toStringAsFixed(2).replaceAll('.', ',')} €",
+                  "Tarif à l'unité : ${(fruit.price).toStringAsFixed(2).replaceAll('.', ',')} €",
                   style: const TextStyle(fontSize: 20))),
           const SizedBox(height: 50),
           ElevatedButton(
@@ -84,8 +100,7 @@ class FruitDetailsScreen extends StatelessWidget {
                 ),
                 backgroundColor: Colors.red,
               );
-              if (fruit.clickCount == 0) {
-              } else {
+              if (!(fruit.clickCount == 0)) {
                 deleteFruit();
               }
               ScaffoldMessenger.of(context).showSnackBar(snackBar);

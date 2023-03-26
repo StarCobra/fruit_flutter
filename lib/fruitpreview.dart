@@ -14,7 +14,7 @@ class FruitPreview extends StatelessWidget {
     required this.deleteFruit,
   });
 
-  Route _createRoute() {
+  Route _fruitRoute() {
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) =>
           FruitDetailsScreen(
@@ -46,7 +46,7 @@ class FruitPreview extends StatelessWidget {
           onTap: () {
             Navigator.push(
               context,
-              _createRoute(),
+              _fruitRoute(),
             );
           },
           title: Row(
@@ -64,7 +64,7 @@ class FruitPreview extends StatelessWidget {
                       ),
                     ),
                     Image.asset(
-                      fruit.pic, // chemin de l'image à afficher
+                      fruit.image, // chemin de l'image à afficher
                       height: 48,
                       width: 48, // largeur de l'image
                     ),
