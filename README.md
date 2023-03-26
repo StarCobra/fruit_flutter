@@ -1,10 +1,19 @@
-# fruit_salad
+# Projet fruit_salad
 
-## Participants : Damien Poirot, Léo Six et Waïl Zidane
+Création d'une application mobile en Flutter qui affiche une liste de fruits
 
-Création d'une application Flutter qui affiche une liste de fruits. Ces fruits peuvent être ajoutés au panier en affichant le montant total.
+## Participants : Damien Poirot, Léo Six et Waïl Zidane.
 
-Avancement du projet : **TP4**
+### Avancement du projet : **TP5**.
+
+## Fonctionnalités réalisées:
+
+- Affichage des fruits et possibilité d'ajout au panier.
+- Acceder au panier sur une seconde page.
+- Acceder au caractéristique d'un fruit.
+- Possibilité de supprimer le fruit du panier.
+- Ajout du prix du fruit ou le soustrait si on le retire du panier.
+
 
 ## Documentation
 
