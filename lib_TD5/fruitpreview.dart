@@ -41,7 +41,7 @@ class FruitPreview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: fruit.color, // couleur de fond du fruit
+        color: fruit.color, // background-color des fruits
         child: ListTile(
           onTap: () {
             Navigator.push(
@@ -56,17 +56,17 @@ class FruitPreview extends StatelessWidget {
                 child: Row(children: [
                   Stack(children: [
                     Container(
-                      height: 50, // hauteur du cercle
-                      width: 50, // largeur du cercle
+                      height: 50,
+                      width: 50,
                       decoration: const BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Colors.blue, // couleur du cercle
+                        color: Colors.blue,
                       ),
                     ),
                     Image.asset(
-                      fruit.image, // chemin de l'image à afficher
+                      './assets/${fruit.image}', // Chemin de l'image
                       height: 48,
-                      width: 48, // largeur de l'image
+                      width: 48,
                     ),
                   ]),
                   const SizedBox(width: 10),
@@ -82,13 +82,6 @@ class FruitPreview extends StatelessWidget {
               ),
               Row(
                 children: [
-                  /* Text(
-                    "${((fruit.price * fruit.clickCount).toStringAsFixed(2)).replaceAll('.', ',')} €",
-                    textAlign: TextAlign.right,
-                    style: const TextStyle(
-                      color: Colors.black,
-                    ),
-                  ),*/
                   TextButton(
                       onPressed: () {
                         onTap();
@@ -107,34 +100,21 @@ class FruitPreview extends StatelessWidget {
                           action: SnackBarAction(
                             label: "X",
                             textColor: Colors.white,
-                            onPressed: () {
-                              // Some code to undo the change.
-                            },
+                            onPressed: () {},
                           ),
                         );
                         ScaffoldMessenger.of(context).showSnackBar(snackBar);
                       },
                       style: ButtonStyle(
                         padding: MaterialStateProperty.all<EdgeInsets>(
-                          const EdgeInsets.all(
-                              20.0), // Remplacez 10.0 par la valeur de votre choix
+                          const EdgeInsets.all(20.0),
                         ),
                         shape: MaterialStateProperty.all<CircleBorder>(
                             const CircleBorder()),
                       ),
-                      child: const Icon(
-                        Icons.add_shopping_cart,
-                        color: Colors.black38,
-                        // Ajouter cette ligne pour définir la couleur
-                        size:
-                            30, // Ajouter cette ligne pour définir la taille),
-                      )),
+                      child: const Icon(Icons.add_shopping_cart,
+                          color: Colors.black38, size: 30)),
                   const SizedBox(width: 10),
-                  // espace entre le texte et le bouton
-                  /*        TextButton(
-                    onPressed: deleteFruit,
-                    child: const Icon(Icons.delete),
-                  ),*/
                 ],
               ),
             ],

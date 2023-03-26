@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 class CartScreen extends StatelessWidget {
-
-
   const CartScreen({
     super.key,
   });
@@ -26,22 +24,22 @@ class CartScreen extends StatelessWidget {
                   child: Row(children: [
                     Stack(children: [
                       Container(
-                        height: 50, // hauteur du cercle
-                        width: 50, // largeur du cercle
+                        height: 50,
+                        width: 50,
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
-                          color: Colors.blue, // couleur du cercle
+                          color: Colors.blue,
                         ),
                       ),
                       Image.asset(
-                        "pomme.png", // chemin de l'image à afficher
+                        "./assets/pomme.png", // Chemin de l'image
                         height: 48,
-                        width: 48, // largeur de l'image
+                        width: 48,
                       ),
                     ]),
                     const SizedBox(width: 10),
                     const Text(
-                      "Nom du fruit",
+                      "POMME", // Nom des fruits dans le panier
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 20,
@@ -53,14 +51,13 @@ class CartScreen extends StatelessWidget {
                 Row(
                   children: [
                     const Text(
-                      "Prix €",
+                      "POMME €",
                       textAlign: TextAlign.right,
                       style: TextStyle(
                         color: Colors.black,
                       ),
                     ),
                     const SizedBox(width: 10),
-                    // espace entre le texte et le bouton
                     TextButton(
                       onPressed: () {
                         final snackBar = SnackBar(
@@ -78,9 +75,7 @@ class CartScreen extends StatelessWidget {
                           action: SnackBarAction(
                             label: "X",
                             textColor: Colors.white,
-                            onPressed: () {
-                              // Some code to undo the change.
-                            },
+                            onPressed: () {},
                           ),
                         );
                         ScaffoldMessenger.of(context).showSnackBar(snackBar);

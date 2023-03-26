@@ -20,9 +20,8 @@ class FruitDetailsScreen extends StatelessWidget {
         title: Center(
             child: Text(fruit.name,
                 style: const TextStyle(
-                  fontSize: 32, // Taille du texte en pixels
-                  fontWeight:
-                      FontWeight.normal, // Épaisseur du texte (bold = gras)
+                  fontSize: 32,
+                  fontWeight: FontWeight.normal,
                 ))),
       ),
       body: Column(
@@ -30,7 +29,7 @@ class FruitDetailsScreen extends StatelessWidget {
         children: [
           Center(
             child: Image.asset(
-              fruit.image, // chemin de l'image à afficher
+              './assets/${fruit.image}', // Chemin de l'image
               height: 200,
               width: 200,
             ),
@@ -39,25 +38,22 @@ class FruitDetailsScreen extends StatelessWidget {
           Center(
               child: Text(fruit.name,
                   style: const TextStyle(
-                    fontSize: 20, // Taille du texte en pixels
-                    fontWeight:
-                        FontWeight.bold, // Épaisseur du texte (bold = gras)
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
                   ))),
           const SizedBox(height: 50),
           Center(
               child: Text("Origine : ${fruit.origin}",
                   style: const TextStyle(
-                    fontSize: 18, // Taille du texte en pixels
-                    fontWeight:
-                        FontWeight.normal, // Épaisseur du texte (bold = gras)
+                    fontSize: 18,
+                    fontWeight: FontWeight.normal,
                   ))),
           const SizedBox(height: 50),
           Center(
               child: Text("Stock : ${fruit.stock}",
                   style: const TextStyle(
-                    fontSize: 18, // Taille du texte en pixels
-                    fontWeight:
-                    FontWeight.normal, // Épaisseur du texte (bold = gras)
+                    fontSize: 18,
+                    fontWeight: FontWeight.normal,
                   ))),
           const SizedBox(height: 50),
           Center(
@@ -69,11 +65,10 @@ class FruitDetailsScreen extends StatelessWidget {
             style: ElevatedButton.styleFrom(
               foregroundColor: Colors.white,
               backgroundColor: Colors.red,
-              // couleur du texte
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
               textStyle: const TextStyle(
-                fontSize: 16, // taille de police du texte
-                fontWeight: FontWeight.normal, // épaisseur du texte
+                fontSize: 16,
+                fontWeight: FontWeight.normal,
               ),
             ),
             onPressed: () {
@@ -94,9 +89,7 @@ class FruitDetailsScreen extends StatelessWidget {
                 action: SnackBarAction(
                   label: "X",
                   textColor: Colors.white,
-                  onPressed: () {
-                    // Some code to undo the change.
-                  },
+                  onPressed: () {},
                 ),
                 backgroundColor: Colors.red,
               );
@@ -128,9 +121,7 @@ class FruitDetailsScreen extends StatelessWidget {
             action: SnackBarAction(
               label: "X",
               textColor: Colors.white,
-              onPressed: () {
-                // Some code to undo the change.
-              },
+              onPressed: () {},
             ),
           );
           ScaffoldMessenger.of(context).showSnackBar(snackBar);

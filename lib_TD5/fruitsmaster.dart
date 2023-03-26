@@ -25,7 +25,7 @@ class FruitsMasterState extends State<FruitsMaster> {
         const curve = Curves.ease;
 
         var tween =
-        Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
         return SlideTransition(
           position: animation.drive(tween),
@@ -49,7 +49,6 @@ class FruitsMasterState extends State<FruitsMaster> {
       }
       _sum += fruit.price;
     });
-
   }
 
   void _deleteFruit(Fruit fruit) async {
@@ -57,11 +56,9 @@ class FruitsMasterState extends State<FruitsMaster> {
       if (fruit.clickCount == 1) {
         _cart.remove(fruit);
       }
-
       if (!(fruit.clickCount == 0)) {
         _sum = (_sum - fruit.price);
       }
-
       if (fruit.clickCount > 0) {
         fruit.clickCount = fruit.clickCount - 1;
       }
@@ -80,7 +77,6 @@ class FruitsMasterState extends State<FruitsMaster> {
 
     try {
       Response response = await api.get('fruits?fields=*.*');
-      //?fields=*.*
       //permet d'obtenir les données des modèles imbriqués Fruit + Country
 
       if (response.statusCode == 200 || response.statusCode == 304) {
@@ -125,7 +121,6 @@ class FruitsMasterState extends State<FruitsMaster> {
                 );
               },
             ),
-            // const Icon(Icons.shopping_cart, color: Colors.white, size: 30)
           ],
         ),
       ),
@@ -154,16 +149,3 @@ class FruitsMasterState extends State<FruitsMaster> {
     );
   }
 }
-
-/*
-ListView.builder(
-itemCount: _cart.length,
-itemBuilder: (context, index) {
-final fruit = _cart[index];
-return CartScreen(
-fruits: _cart,
-fruit: fruit,
-deleteFruit: () => _deleteFruit(fruit),
-);
-},
-)*/
